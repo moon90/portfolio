@@ -1,0 +1,15 @@
+image: alpine:latest
+
+pages:
+  stage: deploy
+  script:
+    - mkdir -p public/assets
+    - cp index.html public/
+    - cp style.css public/
+    - cp -r assets/* public/assets/ || true
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
+    - master
